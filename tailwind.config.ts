@@ -1,0 +1,14 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+    content: [
+        "./src/**/*.{js,ts,jsx,tsx,mdx}" // Arquivos que o Tailwind vai ler
+    ],
+    theme: {
+        extend: {
+        },
+    },
+    plugins: [],
+};
+
+export default config;
