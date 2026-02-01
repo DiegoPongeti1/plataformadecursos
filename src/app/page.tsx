@@ -1,3 +1,8 @@
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Pagina Inicial"
+}
 
 export default function PageHome() {
   return (
