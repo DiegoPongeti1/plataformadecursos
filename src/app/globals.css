@@ -21,5 +21,10 @@
 
 
 html,body {
-  @apply bg-background text-text w-screen h-screen;
+  @apply bg-background text-text w-screen h-screen underline-offset-4;
+}
+
+
+a {
+  @apply hover:underline active:opacity-40 transition-opacity;
 }
