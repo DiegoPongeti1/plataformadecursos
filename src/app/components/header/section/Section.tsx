@@ -1,15 +1,23 @@
 import { Card } from "../card/Card";
 
 
-export function Section() {
+interface ISectionProps { // Define as propriedades que a Section receberá
+    title: string; // Título da seção
+    variant: 'grid' | 'h-list';
+}
+
+export function Section({ title, variant }: ISectionProps) { // Recebe as propriedades e as desestrutura
     return (
         <section className="flex flex-col gap-4 px-4 "> {/*px aplica o padding no left e no right*/}
             <h2 className="font-bold text-xl">
-                Veja mais cursos
+                {title} {/* Exibe o título da seção*/}
             </h2>
 
-            <ul className=" flex flex-col gap-2 sm:flex-row">
-                <li>
+            <ul
+                data-variant={variant}
+                className=" grid gap-2 grid-cols-1 sm:grid-cols-none data-[variant=grid]:sm:grid-cols-2 data-[variant=grid]:md:grid-cols-3 data-[variant=h-list]:sm:grid-flow-col data-[variant=h-list]:sm:overflow-x-auto "
+            > {/*grid-cols-1 aplica o grid no left e no right*/}
+                <li data-variant={variant} className="w-full data-[variant=h-list]:sm:w-72 ">
                     <Card
                         image={`https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg`}
                         title="Curso de API Rest, Node e TypeScript"
@@ -55,7 +63,7 @@ export function Section() {
                     #DesenvolvimentoWeb #Programação #DesenvolvimentoDeSoftware #AprenderProgramação #CursosOnline #TechTutoriais #YouTubeEducação #CodeNewbies #DesenvolvimentoFrontend #CodeWithMe #TecnologiaEducacional #WebDesign #DesenvolvimentoDeAplicativos #AprendaACodificar #TecnologiaDeFrontend #EducaçãoDigital #DesenvolvimentoDeApps #TutoriaisDeProgramação #CódigoCriativo #ProgramaçãoParaIniciantes #NextJS #typescript #javascript #tailwindcss #react #reactjs"
                     />
                 </li>
-                <li>
+                <li data-variant={variant} className="w-full data-[variant=h-list]:sm:w-72">
                     <Card
                         image={`https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg`}
                         title="Curso de API Rest, Node e TypeScript"
@@ -101,7 +109,7 @@ export function Section() {
                     #DesenvolvimentoWeb #Programação #DesenvolvimentoDeSoftware #AprenderProgramação #CursosOnline #TechTutoriais #YouTubeEducação #CodeNewbies #DesenvolvimentoFrontend #CodeWithMe #TecnologiaEducacional #WebDesign #DesenvolvimentoDeAplicativos #AprendaACodificar #TecnologiaDeFrontend #EducaçãoDigital #DesenvolvimentoDeApps #TutoriaisDeProgramação #CódigoCriativo #ProgramaçãoParaIniciantes #NextJS #typescript #javascript #tailwindcss #react #reactjs"
                     />
                 </li>
-                <li><Card
+                <li data-variant={variant} className="w-full data-[variant=h-list]:sm:w-72"><Card
                     image={`https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg`}
                     title="Curso de API Rest, Node e TypeScript"
                     href="/cursos/dadada"

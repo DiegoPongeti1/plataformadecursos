@@ -1,5 +1,6 @@
 
 import { Metadata } from "next";
+import { Section } from "../components/header/section/Section";
 
 export const metadata: Metadata = {
     title: "Codarse - Todos os Cursos"
@@ -9,7 +10,9 @@ export const metadata: Metadata = {
 export default function PageCursos() {
     return (
         <main>
-            <h2>Cursos</h2>
+            <Section title="Todos os Cursos"
+                variant="grid"
+            />
         </main>
     );
 }
