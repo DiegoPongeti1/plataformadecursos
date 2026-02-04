@@ -50,7 +50,7 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
 
                 {variant === "h-list" && (
                     <button
-                        className=" h-[56px] w-[56px] rounded-full bg-primary flex items-center justify-center sticky my-auto left-0 -ml-14 disabled:opacity-0 transition-opacity-0 active:opacity-80 "
+                        className=" h-[56px] w-[56px] rounded-full bg-primary hidden sm:flex flex items-center justify-center sticky my-auto left-0 -ml-14 disabled:opacity-0 transition-opacity-0 active:opacity-80 "
                         disabled={scrollPosition === "start"}
                         onClick={() => handleSetScroll(-300)} // Rola a lista para a esquerda
                     >
@@ -72,7 +72,7 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
 
                 {variant === "h-list" && (
                     <button
-                        className=" h-[56px] w-[56px] rounded-full bg-primary flex items-center justify-center sticky my-auto right-0 -mr-14 disabled:opacity-0 transition-opacity active:opacity-80"
+                        className=" h-[56px] w-[56px] rounded-full bg-primary hidden sm:flex flex items-center justify-center sticky my-auto right-0 -mr-14 disabled:opacity-0 transition-opacity active:opacity-80"
                         disabled={scrollPosition === "end"}
                         onClick={() => handleSetScroll(300)} // Rola a lista para a direita
                     >
