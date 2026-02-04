@@ -93,7 +93,7 @@ export function Header() {
                     </ul>
                 </div>
 
-
+                {/* line-clamp-1 faz com que o texto não ultrapasse 1 linha e coloque reticências no final */}
                 <h1 className="sm:hidden line-clamp-1">
                     {title}
                 </h1>
