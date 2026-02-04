@@ -1,7 +1,7 @@
 "use client";
 import { MdKeyboardArrowLeft, MdKeyboardArrowRight } from "react-icons/md";
 import { Card, ICardProps } from "../card/Card";
-import { useRef } from "react";
+import { useRef, useState, UIEvent } from "react";
 
 
 interface ISectionProps { // Define as propriedades que a Section receberá
@@ -14,7 +14,21 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
 
     const scroollRef = useRef<HTMLUListElement>(null) //cria uma referência para o elemento ul
 
-    const handleScroll = (scroll: number) => { // Função para rolar a lista
+    const [scrollPosition, setScrollPosition] = useState<'start' | 'middle' | 'end'>("start")
+
+    const handleScroll = (event: UIEvent<HTMLUListElement>) => {
+
+
+        if (event.currentTarget.scrollLeft === 0) {
+            setScrollPosition("start")
+        } else if ((event.currentTarget.scrollWidth - event.currentTarget.clientWidth) === event.currentTarget.scrollLeft) {
+            setScrollPosition('end')
+        } else {
+            setScrollPosition('middle')
+        }
+    }
+
+    const handleSetScroll = (scroll: number) => { // Função para rolar a lista
         const currentScrollLeft = scroollRef.current?.scrollLeft || 0; // Pega a posição atual da lista
         scroollRef.current?.scrollTo({ behavior: 'smooth', left: currentScrollLeft + scroll }); // Rola a lista
     }
@@ -27,17 +41,22 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
             </h2>
 
             <ul
+                onScroll={handleScroll}
                 ref={scroollRef}
                 data-variant={variant}
+
                 className=" grid gap-2 grid-cols-1 sm:grid-cols-none data-[variant=grid]:sm:grid-cols-2 data-[variant=grid]:md:grid-cols-3 data-[variant=h-list]:sm:grid-flow-col data-[variant=h-list]:sm:overflow-x-auto  "
             > {/*grid-cols-1 aplica o grid no left e no right*/}
 
-                <button className=" h-[56px] w-[56px] rounded-full bg-primary flex items-center justify-center sticky my-auto left-0 -ml-14 "
-                    onClick={() => handleScroll(-300)} // Rola a lista para a esquerda
-                >
-                    <MdKeyboardArrowLeft size={32} />
-                </button>
-
+                {variant === "h-list" && (
+                    <button
+                        className=" h-[56px] w-[56px] rounded-full bg-primary flex items-center justify-center sticky my-auto left-0 -ml-14 disabled:opacity-0 transition-opacity-0 active:opacity-80 "
+                        disabled={scrollPosition === "start"}
+                        onClick={() => handleSetScroll(-300)} // Rola a lista para a esquerda
+                    >
+                        <MdKeyboardArrowLeft size={32} />
+                    </button>
+                )}
 
                 {items.map(item => (
                     <li key={item.title} data-variant={variant} className="w-full data-[variant=h-list]:sm:w-72 ">
@@ -51,11 +70,15 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
                     </li>
                 ))}
 
-                <button className=" h-[56px] w-[56px] rounded-full bg-primary flex items-center justify-center sticky my-auto right-0 -mr-14"
-                    onClick={() => handleScroll(300)} // Rola a lista para a direita
-                >
-                    <MdKeyboardArrowRight size={32} />
-                </button>
+                {variant === "h-list" && (
+                    <button
+                        className=" h-[56px] w-[56px] rounded-full bg-primary flex items-center justify-center sticky my-auto right-0 -mr-14 disabled:opacity-0 transition-opacity active:opacity-80"
+                        disabled={scrollPosition === "end"}
+                        onClick={() => handleSetScroll(300)} // Rola a lista para a direita
+                    >
+                        <MdKeyboardArrowRight size={32} />
+                    </button>
+                )}
             </ul>
         </section >
     );
