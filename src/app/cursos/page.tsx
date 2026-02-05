@@ -10,7 +10,7 @@ export const metadata: Metadata = {
 export default function PageCursos() {
     return (
         <main className="mt-8 flex justify-center ">
-            <div className="mt-8 min-[990px]:max-w-[880px]">
+            <div className="w-full min-[880px]:max-w-[880px]">
 
                 <Section
                     title="Todos os Cursos"
