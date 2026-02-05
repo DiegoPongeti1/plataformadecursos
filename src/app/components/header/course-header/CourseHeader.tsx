@@ -1,4 +1,9 @@
+import { CollapsibleText } from "./components/CollapsibleText"
 
+
+const verMais = () => {
+
+}
 
 export const CourseHeader = () => {
     return (
@@ -7,9 +12,10 @@ export const CourseHeader = () => {
                 Curso de Figma para DEVs
             </h1>
 
-            <p>
-                Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile.
-            </p>
+            <CollapsibleText numberOfLinesWhenClosed={3}>
+                Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile.
+                Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile.
+            </CollapsibleText>
 
             <div className="flex gap-2 items-center">
                 <button className="rounded-full gap-8 py-2 px-4 bg-paper">
