@@ -1,4 +1,7 @@
+
+import { MdShare } from "react-icons/md"
 import { CollapsibleText } from "./components/CollapsibleText"
+import { ContentCopy } from "./components/CopyContent"
 
 
 const verMais = () => {
@@ -18,9 +21,12 @@ export const CourseHeader = () => {
             </CollapsibleText>
 
             <div className="flex gap-2 items-center">
-                <button className="rounded-full gap-8 py-2 px-4 bg-paper">
-                    Compartilhar
-                </button>
+                <ContentCopy title="Conteúdo copiado!" content="https://www.youtube.com/watch?v=dQw4w9WgXcQ">
+                    <button className="rounded-full gap-2 py-2 px-4 bg-paper flex items-center">
+                        <MdShare />
+                        Compartilhar
+                    </button>
+                </ContentCopy>
 
                 <span className="font-normal text-lg">
                     48 aulas
