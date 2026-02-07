@@ -10,7 +10,7 @@ const verMais = () => {
 
 export const CourseHeader = () => {
     return (
-        <div className="flex flex-col gap-2">
+        <div className="flex flex-col gap-2 ">
             <h1 className="font-extrabold text-xl">
                 Curso de Figma para DEVs
             </h1>
