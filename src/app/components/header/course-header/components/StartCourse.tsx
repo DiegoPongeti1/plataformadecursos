@@ -22,7 +22,7 @@ export function StartCourse({ idCourse, idClass, imageUrl }: IStartCourseProps) 
             <Link href={`/player/${idCourse}/${idClass}`}
                 className="bg-primary p-2 px-3 rounded text-center"
             >
-                Começar o Curso
+                Iniciar o Curso
             </Link>
         </div>
     )
