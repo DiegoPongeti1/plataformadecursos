@@ -22,8 +22,18 @@ export default async function PageCourseDetail({ params }: Props) {
     return (
         <main className="mt-8 flex justify-center ">
             <div className="w-full min-[880px]:max-w-[880px] px-2 flex flex-col gap-4">
-                <StartCourse idCourse={id} idClass="1" imageUrl="https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg" />
+                <StartCourse
+                    idCourse={id}
+                    idClass="1"
+                    title=" Curso de Figma para DEVs "
+                    imageUrl="https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg"
+                />
 
+                <CourseHeader />
+                <CourseHeader />
+                <CourseHeader />
+                <CourseHeader />
+                <CourseHeader />
                 <CourseHeader />
             </div>
         </main>
