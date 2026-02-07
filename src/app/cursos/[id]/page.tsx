@@ -1,6 +1,7 @@
 import { Metadata } from "next"
 import { CourseHeader } from "../../components/header/course-header/CourseHeader";
 import { StartCourse } from "../../components/header/course-header/components/StartCourse";
+import { Class } from "../../components/header/course-content/components/Class";
 
 
 interface Props {
@@ -23,7 +24,7 @@ export default async function PageCourseDetail({ params }: Props) {
         <main className="mt-8 flex justify-center ">
             <div className="w-full min-[880px]:max-w-[880px] px-2  flex flex-col gap-4 lg:px-0 md:flex-row-reverse">
 
-                <div className="flex-1 bg-fixed">
+                <div className="flex-1 ">
 
                     <StartCourse
                         idCourse={id}
@@ -34,11 +35,9 @@ export default async function PageCourseDetail({ params }: Props) {
                 </div>
                 <div className="flex-2">
                     <CourseHeader />
-                    <CourseHeader />
-                    <CourseHeader />
-                    <CourseHeader />
-                    <CourseHeader />
-                    <CourseHeader />
+                    <Class
+                        title="NextJs, TailwindCss e TypeScript: #00 - Apresentação do Projeto"
+                        palyerUrl="/player/{courseId}/{classId}" />
                 </div>
             </div>
         </main>
