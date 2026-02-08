@@ -33,8 +33,12 @@ export default async function PageCourseDetail({ params }: Props) {
                         imageUrl="https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg"
                     />
                 </div>
-                <div className="flex-2 flex flex-col gap-12">
-                    <CourseHeader />
+                <div className="flex-2 flex flex-col gap-12 pb-12">
+                    <CourseHeader
+                        title={"Curso de Figma para DEVs"}
+                        description="Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile."
+                        numberofclasses={48}
+                    />
 
                     <CourseContent
                         classGroups={[
