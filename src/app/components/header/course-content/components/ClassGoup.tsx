@@ -1,11 +1,11 @@
 'use client'
 
-import { MdKeyboardArrowDown, MdKeyboardArrowUp } from "react-icons/md";
+import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import { useState } from "react";
 
 import { Class } from "./Class";
-
-interface IClassGroupProps {
+// interface para tipar as props, mas não é obrigatório usar, é só uma boa prática
+export interface IClassGroupProps {
     title: string;
     courseId: string;
     classes: {
@@ -14,7 +14,9 @@ interface IClassGroupProps {
 
     }[];
 }
+
 export function ClassGroup({ title, courseId, classes }: IClassGroupProps) {
+    // hook para controlar o estado de aberto ou fechado
     const [open, setOpen] = useState(false);
 
 
@@ -26,7 +28,7 @@ export function ClassGroup({ title, courseId, classes }: IClassGroupProps) {
             >
                 {open
                     ?
-                    <MdKeyboardArrowUp size={24} />
+                    <MdKeyboardArrowRight size={24} />
                     :
                     <MdKeyboardArrowDown size={24} />
                 }

@@ -1,8 +1,7 @@
 import { Metadata } from "next"
 import { CourseHeader } from "../../components/header/course-header/CourseHeader";
 import { StartCourse } from "../../components/header/course-header/components/StartCourse";
-import { Class } from "../../components/header/course-content/components/Class";
-import { ClassGroup } from "../../components/header/course-content/components/ClassGoup";
+import { CourseContent } from "../../components/header/course-content/CourseContent";
 
 
 interface Props {
@@ -34,15 +33,31 @@ export default async function PageCourseDetail({ params }: Props) {
                         imageUrl="https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg"
                     />
                 </div>
-                <div className="flex-2 flex flex-col gap-4">
+                <div className="flex-2 flex flex-col gap-12">
                     <CourseHeader />
-                    <ClassGroup
-                        title='Introdução e Apresentação do Projeto'
-                        courseId="123"
-                        classes={[
-                            { id: '1', title: 'NextJs, TailwindCss e TypeScript: #00 - Apresentação do Projeto' },
-                            { id: '2', title: 'NextJs, TailwindCss e TypeScript: #01 - Instalação e Configuração do Ambiente' },
+
+                    <CourseContent
+                        classGroups={[
+                            {
+                                title: 'Introdução e Apresentação do Projeto',
+                                courseId: "123",
+                                classes: [
+                                    { id: '1', title: 'NextJs, TailwindCss e TypeScript: #00 - Apresentação do Projeto' },
+                                    { id: '2', title: 'NextJs, TailwindCss e TypeScript: #01 - Instalação e Configuração do Ambiente' },
+                                ],
+                            },
+
+                            {
+                                title: 'Módulo 2',
+                                courseId: "123",
+                                classes: [
+                                    { id: '4', title: 'NextJs, TailwindCss e TypeScript: #00 - Apresentação do Projeto' },
+                                    { id: '5', title: 'NextJs, TailwindCss e TypeScript: #01 - Instalação e Configuração do Ambiente' },
+                                ],
+                            },
                         ]}
+
+
                     />
                 </div>
             </div>
