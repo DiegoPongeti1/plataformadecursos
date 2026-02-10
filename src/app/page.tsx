@@ -1,5 +1,6 @@
 import { Metadata } from "next";
 import { Section } from "./components/header/section/Section";
+import { KeepWatching } from "./components/KeepWatching";
 
 export const metadata: Metadata = {
   title: "Pagina Inicial"
@@ -8,7 +9,9 @@ export const metadata: Metadata = {
 export default function PageHome() {
   return (
     <div className="mt-8 flex justify-center">
-      <main className="w-full mt-8 min-[880px]:max-w-[880px]">
+      <main className="w-full mt-8 min-[880px]:max-w-[880px] flex flex-col gap-4">
+
+        <KeepWatching />
         <Section
           variant="h-list"
           title="Cursos"
