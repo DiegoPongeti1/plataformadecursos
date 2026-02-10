@@ -1,26 +1,26 @@
-
 import { Metadata } from "next";
 import { Section } from "../components/header/section/Section";
+import { KeepWatching } from "../components/KeepWatching";
 
 export const metadata: Metadata = {
-    title: "Codarse - Todos os Cursos"
+  title: "Pagina Inicial"
 }
 
+export default function PageHome() {
+  return (
+    <div className="mt-8 flex justify-center">
+      <main className="w-full mt-8 min-[880px]:max-w-[880px] flex flex-col gap-4">
 
-export default function PageCursos() {
-    return (
-        <main className="mt-8 flex justify-center ">
-            <div className="w-full min-[880px]:max-w-[880px]">
-
-                <Section
-                    title="Todos os Cursos"
-                    variant="grid"
-                    items={[
-                        {
-                            href: "/cursos/123",
-                            image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
-                            title: "Curso de API Rest, Node e TypeScript",
-                            description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
+        <KeepWatching />
+        <Section
+          variant="h-list"
+          title="Cursos"
+          items={[
+            {
+              href: "/cursos/123",
+              image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
+              title: "Curso de API Rest, Node e TypeScript",
+              description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
                                     Nessa vamos criar junto o componente de card da nossa aplicação, esse componente será usado em toda a nossa plataforma de cursos, e tem as melhores práticas de desenvolvimento aplicadas.
 
 
@@ -60,13 +60,13 @@ export default function PageCursos() {
 
                                     #DesenvolvimentoWeb #Programação #DesenvolvimentoDeSoftware #AprenderProgramação #CursosOnline #TechTutoriais #YouTubeEducação #CodeNewbies #DesenvolvimentoFrontend #CodeWithMe #TecnologiaEducacional #WebDesign #DesenvolvimentoDeAplicativos #AprendaACodificar #TecnologiaDeFrontend #EducaçãoDigital #DesenvolvimentoDeApps #TutoriaisDeProgramação #CódigoCriativo #ProgramaçãoParaIniciantes #NextJS #typescript #javascript #tailwindcss #react #reactjs`
 
-                        },
+            },
 
-                        {
-                            href: "/cursos/123",
-                            image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
-                            title: "Curso de API Rest, Node e TypeScript",
-                            description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
+            {
+              href: "/cursos/123",
+              image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
+              title: "Curso de API Rest, Node e TypeScript",
+              description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
                                     Nessa vamos criar junto o componente de card da nossa aplicação, esse componente será usado em toda a nossa plataforma de cursos, e tem as melhores práticas de desenvolvimento aplicadas.
 
 
@@ -106,13 +106,13 @@ export default function PageCursos() {
 
                                     #DesenvolvimentoWeb #Programação #DesenvolvimentoDeSoftware #AprenderProgramação #CursosOnline #TechTutoriais #YouTubeEducação #CodeNewbies #DesenvolvimentoFrontend #CodeWithMe #TecnologiaEducacional #WebDesign #DesenvolvimentoDeAplicativos #AprendaACodificar #TecnologiaDeFrontend #EducaçãoDigital #DesenvolvimentoDeApps #TutoriaisDeProgramação #CódigoCriativo #ProgramaçãoParaIniciantes #NextJS #typescript #javascript #tailwindcss #react #reactjs`
 
-                        },
+            },
 
-                        {
-                            href: "/cursos/123",
-                            image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
-                            title: "Curso de API Rest, Node e TypeScript",
-                            description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
+            {
+              href: "/cursos/123",
+              image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
+              title: "Curso de API Rest, Node e TypeScript",
+              description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
                                     Nessa vamos criar junto o componente de card da nossa aplicação, esse componente será usado em toda a nossa plataforma de cursos, e tem as melhores práticas de desenvolvimento aplicadas.
 
 
@@ -152,12 +152,10 @@ export default function PageCursos() {
 
                                     #DesenvolvimentoWeb #Programação #DesenvolvimentoDeSoftware #AprenderProgramação #CursosOnline #TechTutoriais #YouTubeEducação #CodeNewbies #DesenvolvimentoFrontend #CodeWithMe #TecnologiaEducacional #WebDesign #DesenvolvimentoDeAplicativos #AprendaACodificar #TecnologiaDeFrontend #EducaçãoDigital #DesenvolvimentoDeApps #TutoriaisDeProgramação #CódigoCriativo #ProgramaçãoParaIniciantes #NextJS #typescript #javascript #tailwindcss #react #reactjs`
 
-                        }
-                    ]}
-                />
-            </div>
-        </main>
-
-
-    );
+            }
+          ]}
+        />
+      </main>
+    </div>
+  );
 }
