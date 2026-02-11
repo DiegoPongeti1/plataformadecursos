@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import { Section } from "../components/header/section/Section";
+import { Section } from "../components/section/Section";
 import { KeepWatching } from "../components/KeepWatching";
 
 export const metadata: Metadata = {

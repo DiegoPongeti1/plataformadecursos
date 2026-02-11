@@ -1,7 +1,7 @@
 import { Metadata } from "next"
-import { CourseHeader } from "../../../components/header/course-header/CourseHeader";
-import { StartCourse } from "../../../components/header/course-header/components/StartCourse";
-import { CourseContent } from "../../../components/header/course-content/CourseContent";
+import { CourseHeader } from "../../../components/course-header/CourseHeader";
+import { StartCourse } from "../../../components/course-header/components/StartCourse";
+import { CourseContent } from "../../../components/course-content/CourseContent";
 
 
 interface Props {

@@ -1,6 +1,6 @@
 
 import { Metadata } from "next";
-import { Section } from "../../components/header/section/Section";
+import { Section } from "../../components/section/Section";
 
 export const metadata: Metadata = {
     title: "Codarse - Todos os Cursos"
