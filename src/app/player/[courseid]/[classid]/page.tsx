@@ -1,18 +1,17 @@
 
 'use client'
-import { PlayerClass } from "@//app/components/player/PlayerClass";
-import { PlayerHeader } from "@//app/components/player/PlayerHeader";
+import { PlayerClass, PlayerClassGroup, PlayerHeader } from "@//app/components/player";
 
 
 interface Props {
-    params: Promise<{
+    params: {
         courseid: string,
         classid: string,
-    }>;
+    };
 }
 
-export default async function PagePlayer({ params }: Props) {
-    const { courseid, classid } = await params;
+export default function PagePlayer({ params: { courseid, classid } }: Props) {
+
     return (
         <>
             <PlayerHeader
@@ -20,13 +19,15 @@ export default async function PagePlayer({ params }: Props) {
                 subtitle="Curso de API Rest, Node e TypeScript"
             />
 
-            <PlayerClass
-                done={false}
-                title="API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas"
-                playing
-                onCheck={() => console.log('check')}
-                onPlay={() => console.log('play')}
-            />
+            <PlayerClassGroup >
+                <PlayerClass
+                    done={false}
+                    title="API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas"
+                    playing
+                    onCheck={() => console.log('check')}
+                    onPlay={() => console.log('play')}
+                />
+            </PlayerClassGroup>
         </>
 
     )
