@@ -3,7 +3,7 @@
 import { MdCheckCircle, MdCircle, MdPlayCircleOutline } from "react-icons/md";
 
 
-interface IPlayerHeaderProps {
+export interface IPlayerClassProps {
     title: string;
     playing: boolean;
     done: boolean;
@@ -12,7 +12,7 @@ interface IPlayerHeaderProps {
     onCheck: () => void;
 }
 
-export function PlayerClass({ title, playing, done, onPlay, onCheck }: IPlayerHeaderProps) {
+export function PlayerClass({ title, playing, done, onPlay, onCheck }: IPlayerClassProps) {
     return (
         <button className="flex gap-6 p-4 items-center" onClick={onPlay}>
             {!done && (
