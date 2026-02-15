@@ -17,7 +17,7 @@ export default function PageHome() {
           title="Cursos"
           items={[
             {
-              href: "/cursos/123",
+              href: "/cursos/course-01",
               image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
               title: "Curso de API Rest, Node e TypeScript",
               description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
@@ -63,7 +63,7 @@ export default function PageHome() {
             },
 
             {
-              href: "/cursos/123",
+              href: "/cursos/course-02",
               image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
               title: "Curso de API Rest, Node e TypeScript",
               description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.
@@ -109,7 +109,7 @@ export default function PageHome() {
             },
 
             {
-              href: "/cursos/123",
+              href: "/cursos/course-03",
               image: "https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg",
               title: "Curso de API Rest, Node e TypeScript",
               description: `No processo de desenvolvimento, as vezes precisamos criar componentes e outros recursos que nos farão performar muito melhor no futuro. A criação de bons componentes de interface é o segredo para um desenvolvimento rápido de uma aplicação frontend.

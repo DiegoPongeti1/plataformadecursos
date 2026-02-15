@@ -1,7 +1,5 @@
 
-'use client'
-import { PlayerClass, PlayerClassGroup, PlayerHeader } from "@//app/components/player";
-
+import { PlayerHeader, PlayerPlaylist } from "@//app/components/player";
 
 interface Props {
     params: {
@@ -10,37 +8,75 @@ interface Props {
     };
 }
 
-export default function PagePlayer({ params: { courseid, classid } }: Props) {
+export default async function PagePlayer({ params }: Props) {
+
+    const { classid, courseid } = await params;
 
     return (
-        <main className="flex flex-col gap-4">
+        <main className="flex flex-col gap-2">
             <PlayerHeader
                 title="API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas"
                 subtitle="Curso de API Rest, Node e TypeScript"
             />
 
-            <PlayerClassGroup
-                onToggle={() => console.log('toggle')}
-                open={true}
-                position={1}
-                title="Módulo 1 - Fundamentos"
-                classes={[
-                    {
-                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                        playing: true,
-                        done: false,
-                    },
-                    {
-                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                        playing: true,
-                        done: false,
-                    },
-                    {
-                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                        playing: false,
-                        done: true,
-                    }
-                ]} />
+            <div className="flex gap-2">
+
+                <div className="max-w-96">
+                    <PlayerPlaylist
+                        PlayingClassId={classid}
+                        PlayingcourseId={courseid}
+                        classGroups={[
+                            {
+
+                                title: "Módulo 1 - Fundamentos",
+                                classes: [
+                                    {
+                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
+                                        Classid: "aula-00",
+                                        done: false,
+                                    },
+                                    {
+                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
+                                        Classid: "aula-01",
+                                        done: false,
+                                    },
+                                    {
+                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
+                                        Classid: "aula-02",
+                                        done: true,
+                                    }
+                                ]
+                            },
+
+                            {
+
+                                title: "Módulo 2 - Ensinamentos",
+                                classes: [
+                                    {
+                                        title: "API Rest, Node e TypeScript: #04 - Apresentação do Curso, tecnologias e ferramentas",
+                                        Classid: "aula-04",
+                                        done: false,
+                                    },
+                                    {
+                                        title: "API Rest, Node e TypeScript: #05 - Apresentação do Curso, tecnologias e ferramentas",
+                                        Classid: "aula-05",
+                                        done: false,
+                                    },
+                                    {
+                                        title: "API Rest, Node e TypeScript: #06 - Apresentação do Curso, tecnologias e ferramentas",
+                                        Classid: "aula-06",
+                                        done: true,
+                                    }
+                                ]
+                            }
+                        ]}
+                    />
+                </div>
+
+                <div className="flex-1">
+                    Player
+                </div>
+            </div>
 
         </main>
 

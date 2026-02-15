@@ -1,16 +1,21 @@
+'use client'
 import { MdKeyboardArrowDown, MdKeyboardArrowRight } from "react-icons/md";
 import { PlayerClass, IPlayerClassProps } from "./PlayerClass";
 
-interface IPlayerClassGroupProps {
+export interface IPlayerClassGroupProps {
     position: number;
     open: boolean;
     title: string;
-    classes: Omit<IPlayerClassProps, 'onCheck' | 'onPlay'>[];
+    PlayingClassId: string;
+    classes: (Pick<IPlayerClassProps, 'title' | 'done'> & { Classid: string })[];
 
     onToggle: () => void;
+    onPlay: (classId: string) => void;
+    onCheck: (classId: string) => void;
+
 
 }
-export function PlayerClassGroup({ position, title, classes, open, onToggle }: IPlayerClassGroupProps) {
+export function PlayerClassGroup({ position, title, classes, open, onToggle, onPlay, PlayingClassId, onCheck }: IPlayerClassGroupProps) {
     return (
         <div className="flex flex-col">
             <button className="flex gap-4 p-4 bg-paper items-center " onClick={onToggle}>
@@ -37,9 +42,10 @@ export function PlayerClassGroup({ position, title, classes, open, onToggle }: I
                     <li key={classItem.title}>
                         <PlayerClass
                             {...classItem}
+                            playing={classItem.Classid === PlayingClassId}
 
-                            onCheck={() => console.log('check')}
-                            onPlay={() => console.log('play')}
+                            onCheck={() => onCheck(classItem.Classid)}
+                            onPlay={() => onPlay(classItem.Classid)}
                         />
                     </li>
                 ))}

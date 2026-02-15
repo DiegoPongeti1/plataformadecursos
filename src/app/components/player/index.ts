@@ -1,3 +1,5 @@
 export * from "./PlayerHeader"
-export * from "./PlayerClass"
-export * from "./PlayerClassGroup"
+export * from "./playlist/components/PlayerClass"
+export * from "./playlist/components/PlayerClassGroup"
+export * from "./playlist/components/PlayerPlaylist"
+
