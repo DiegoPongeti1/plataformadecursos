@@ -1,5 +1,5 @@
 
-import { PlayerHeader, PlayerPlaylist } from "@//app/components/player";
+import { PlayerHeader, PlayerPlaylist, PlayerVideoPlayer } from "@//app/components/player";
 
 interface Props {
     params: {
@@ -28,7 +28,7 @@ export default async function PagePlayer({ params }: Props) {
                         classGroups={[
                             {
 
-                                title: "Módulo 1 - Fundamentos",
+                                title: " 1 - Módulo 1 - Fundamentos",
                                 classes: [
                                     {
                                         title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
@@ -51,10 +51,10 @@ export default async function PagePlayer({ params }: Props) {
 
                             {
 
-                                title: "Módulo 1 - Fundamentos",
+                                title: " 2 - Módulo 1 - Fundamentos",
                                 classes: [
                                     {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
+                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
                                         Classid: "aula-00",
                                         done: false,
                                     },
@@ -74,306 +74,36 @@ export default async function PagePlayer({ params }: Props) {
 
                             {
 
-                                title: "Módulo 1 - Fundamentos",
+                                title: " 3 - Módulo 2 - Teste",
                                 classes: [
                                     {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
+                                        title: "API Rest, Node e TypeScript: #03 - Apresentação do Curso, tecnologias e ferramentas",
                                         Classid: "aula-00",
                                         done: false,
                                     },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-
-                            {
-
-                                title: "Módulo 1 - Fundamentos",
-                                classes: [
-                                    {
-                                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-00",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #01 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-01",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #02 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-02",
-                                        done: true,
-                                    },
-
-                                ]
-                            },
-                            {
-
-                                title: "Módulo 2 - Ensinamentos",
-                                classes: [
                                     {
                                         title: "API Rest, Node e TypeScript: #04 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-04",
+                                        Classid: "aula-01",
                                         done: false,
                                     },
                                     {
                                         title: "API Rest, Node e TypeScript: #05 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-05",
-                                        done: false,
-                                    },
-                                    {
-                                        title: "API Rest, Node e TypeScript: #06 - Apresentação do Curso, tecnologias e ferramentas",
-                                        Classid: "aula-06",
+                                        Classid: "aula-02",
                                         done: true,
-                                    }
+                                    },
+
                                 ]
-                            }
+                            },
+
+
                         ]}
                     />
                 </div>
 
                 <div className="flex-1">
-                    Player
+                    <PlayerVideoPlayer
+                        videoId="Bj1OKr_UKxM"
+                    />
                 </div>
             </div>
 
