@@ -1,27 +1,46 @@
 'use client'
 
-import React from 'react';
-import dynamic from 'next/dynamic'
+import dynamic from "next/dynamic"
 
-interface PlayerProps {
-    url: string;
-}
-
-// import ReactPlayer from 'react-player'
-const ReactPlayer = dynamic(() => import('react-player'), { ssr: false }) as React.ComponentType<PlayerProps>
-
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const ReactPlayer = dynamic(() => import("react-player"), { ssr: false })
 
 interface IPlayerVideoPlayerProps {
     videoId: string;
 }
 
 export const PlayerVideoPlayer = ({ videoId }: IPlayerVideoPlayerProps) => {
-
     return (
         <>
             <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${videoId}`}
+                width="100%"
+                height="100%"
+                src={`https://www.youtube.com/watch?v=${videoId}`}
+                controls
+                playing={false}
             />
         </>
     )
 }
+
+
+// 'use client'
+
+// interface IPlayerVideoPlayerProps {
+//     videoId: string;
+// }
+
+// export const PlayerVideoPlayer = ({ videoId }: IPlayerVideoPlayerProps) => {
+//     return (
+//         <>
+//             <iframe
+//                 width="100%"
+//                 height="100%"
+//                 src={`https://www.youtube.com/embed/${videoId}`}
+//                 title="YouTube video player"
+//                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+//                 allowFullScreen
+//             />
+//         </>
+//     )
+// }
