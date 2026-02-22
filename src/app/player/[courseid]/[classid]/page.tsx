@@ -1,3 +1,4 @@
+'use client'
 
 import { PlayerHeader, PlayerPlaylist, PlayerVideoPlayer } from "@//app/components/player";
 
@@ -8,9 +9,9 @@ interface Props {
     };
 }
 
-export default async function PagePlayer({ params }: Props) {
+export default function PagePlayer({ params }: Props) {
 
-    const { classid, courseid } = await params;
+    const { classid, courseid } = params;
 
     return (
         <main className="flex flex-col gap-2 h-screen">
@@ -104,6 +105,7 @@ export default async function PagePlayer({ params }: Props) {
                     <div className="aspect-video">
                         <PlayerVideoPlayer
                             videoId="Bj1OKr_UKxM"
+                            onPlayNext={() => console.log("play next")}
                         />
                     </div>
                 </div>
