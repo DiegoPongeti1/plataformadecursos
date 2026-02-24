@@ -3,13 +3,11 @@
 import dynamic from "next/dynamic"
 import { useMemo, useState } from "react";
 import { MdPlayCircle } from "react-icons/md";
+import type ReactPlayerType from "react-player";
 
+type ReactPlayerComponent = typeof ReactPlayerType;
 
-
-
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false })
-
 
 
 
@@ -50,11 +48,13 @@ export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerPro
             <ReactPlayer
                 width="100%"
                 height="100%"
-                oEmbedUrl={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
+
+                src={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
 
                 controls={true}
                 playing={false}
-                onProgress={({ playedSeconds }) => setProgress(playedSeconds)}
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                onProgress={({ playedSeconds }: any) => setProgress(playedSeconds)}
                 onDuration={(duration) => setTotalDuration(duration)}
                 onEnded={() => onPlayNext()}
             />
