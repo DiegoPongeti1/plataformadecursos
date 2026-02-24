@@ -50,7 +50,7 @@ export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerPro
             <ReactPlayer
                 width="100%"
                 height="100%"
-                src={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
+                oEmbedUrl={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
 
                 controls={true}
                 playing={false}

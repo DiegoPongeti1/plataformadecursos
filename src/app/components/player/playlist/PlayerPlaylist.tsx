@@ -1,6 +1,6 @@
 'use client'
 import { useRouter } from "next/navigation";
-import { IPlayerClassGroupProps, PlayerClassGroup } from "./PlayerClassGroup";
+import { IPlayerClassGroupProps, PlayerClassGroup } from "./components/PlayerClassGroup";
 import { useState } from "react";
 
 interface IPlayerPlaylistProps {
