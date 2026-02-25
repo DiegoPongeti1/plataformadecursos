@@ -107,6 +107,11 @@ export default function PagePlayer({ params }: Props) {
                     playingclassId={classid}
                     playingcourseId={courseid}
                     classGroups={classGroupsData}
+                    course={{
+                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
+                        description: "Os melhores cursos de API Rest, Node e TypeScript, com aulas práticas e objetivas, focadas no mercado de trabalho, com certificado e suporte de professores qualificados, faça já sua matricula e garanta sua vaga.",
+                        numberOfClasses: 10,
+                    }}
                 />
 
             </div>
