@@ -5,10 +5,9 @@ import { useMemo, useState } from "react";
 import { MdPlayCircle } from "react-icons/md";
 import type ReactPlayerType from "react-player";
 
-type ReactPlayerComponent = typeof ReactPlayerType;
+
 
 const ReactPlayer = dynamic(() => import("react-player"), { ssr: false })
-
 
 
 interface IPlayerVideoPlayerProps {
@@ -55,7 +54,7 @@ export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerPro
                 playing={false}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onProgress={({ playedSeconds }: any) => setProgress(playedSeconds)}
-                onDuration={(duration) => setTotalDuration(duration)}
+                onDuration={(duration: number) => setTotalDuration(duration)}
                 onEnded={() => onPlayNext()}
             />
         </>

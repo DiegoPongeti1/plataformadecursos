@@ -1,6 +1,7 @@
 'use client'
 
 import { useRouter } from "next/navigation"
+import * as Tabs from "@radix-ui/react-tabs";
 
 import { PlayerVideoPlayer } from "./components/PlayerVideoPlayer"
 import { IPlayerClassGroupProps } from "../playlist/components/PlayerClassGroup"
@@ -43,9 +44,45 @@ export const PlayerClassDetails = ({ playingcourseId, classGroups, playingclassI
                 />
             </div>
 
-            <div>
-                Descrição da aula
-            </div>
+            <Tabs.Root defaultValue='class-details'>
+                <Tabs.List className="flex gap-4">
+                    <Tabs.Trigger
+                        value="class-details"
+                        className='p-2 flex items-center justify-center border-b-4 border-transparent data-[state=active]:border-primary '
+                    >
+                        Visão geral
+                    </Tabs.Trigger>
+
+                    <Tabs.Trigger
+                        value="class-comments"
+                        className='p-2 flex items-center justify-center border-b-4 border-transparent data-[state=active]:border-primary '
+                    >
+                        Comentarios
+                    </Tabs.Trigger>
+
+                    <Tabs.Trigger
+                        value="course-details"
+                        className='p-2 flex items-center justify-center border-b-4 border-transparent data-[state=active]:border-primary '
+                    >
+                        Visão geral do Curso
+                    </Tabs.Trigger>
+                </Tabs.List>
+
+                <hr className="border-paper" />
+
+                <Tabs.Content value="class-details">
+                    Detalhes da Aula
+                </Tabs.Content>
+
+                <Tabs.Content value="class-comments">
+                    Comentarios da Aula
+                </Tabs.Content>
+
+                <Tabs.Content value="course-details">
+                    Visão geral do Curso
+                </Tabs.Content>
+
+            </Tabs.Root>
         </div>
     )
 }

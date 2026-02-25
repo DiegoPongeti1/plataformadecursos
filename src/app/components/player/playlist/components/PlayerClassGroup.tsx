@@ -40,6 +40,7 @@ export function PlayerClassGroup({ position, title, classes, open, onToggle, onP
             <ol data-open={open} className="flex flex-col data-[open=false]:hidden">
                 {classes.map(classItem => (
                     <li key={classItem.title}>
+
                         <PlayerClass
                             {...classItem}
                             playing={classItem.Classid === PlayingClassId}
