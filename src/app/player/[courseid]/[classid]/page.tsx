@@ -1,4 +1,3 @@
-'use client'
 
 import { PlayerClassDetails, PlayerHeader, PlayerPlaylist } from "@//app/components/player";
 
@@ -9,7 +8,7 @@ interface Props {
     };
 }
 
-export default function PagePlayer({ params }: Props) {
+export default async function PagePlayer({ params }: Props) {
 
     const classGroupsData = [
         {
@@ -84,7 +83,7 @@ export default function PagePlayer({ params }: Props) {
 
     ]
 
-    const { classid, courseid } = params;
+    const { classid, courseid } = await params;
 
     return (
         <main className="flex flex-col gap-2 h-screen">
@@ -111,6 +110,11 @@ export default function PagePlayer({ params }: Props) {
                         title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
                         description: "Os melhores cursos de API Rest, Node e TypeScript, com aulas práticas e objetivas, focadas no mercado de trabalho, com certificado e suporte de professores qualificados, faça já sua matricula e garanta sua vaga.",
                         numberOfClasses: 10,
+                    }}
+
+                    classItem={{
+                        title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
+                        description: "Visão geral Os melhores cursos de API Rest, Node e TypeScript, com aulas práticas e objetivas, focadas no mercado de trabalho, com certificado e suporte de professores qualificados, faça já sua matricula e garanta sua vaga. www.google.com",
                     }}
                 />
 

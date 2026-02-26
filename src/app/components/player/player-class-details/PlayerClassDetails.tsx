@@ -7,6 +7,7 @@ import { PlayerVideoPlayer } from "./components/PlayerVideoPlayer"
 import { IPlayerClassGroupProps } from "../playlist/components/PlayerClassGroup"
 import { useMemo } from "react";
 import { CourseHeader } from "../../course-header/CourseHeader";
+import { PlayerClassHeader } from "./components/PlayerClassHeader";
 
 interface IPlayerClassDetails {
 
@@ -16,13 +17,18 @@ interface IPlayerClassDetails {
         numberOfClasses: number;
     }
 
+    classItem: {
+        title: string;
+        description: string;
+    }
+
     playingclassId: string;
     playingcourseId: string;
     classGroups: Pick<IPlayerClassGroupProps, 'title' | 'classes'>[];
 }
 
 
-export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playingclassId }: IPlayerClassDetails) => {
+export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playingclassId, classItem }: IPlayerClassDetails) => {
 
     const router = useRouter();
 
@@ -74,12 +80,17 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
                     >
                         Visão geral do Curso
                     </Tabs.Trigger>
+
+
                 </Tabs.List>
 
-                <hr className="border-paper" />
+                <hr className="border-paper mb-2" />
 
                 <Tabs.Content value="class-details">
-                    Detalhes da Aula
+                    <PlayerClassHeader
+                        title={classItem.title}
+                        description={classItem.description}
+                    />
                 </Tabs.Content>
 
                 <Tabs.Content value="class-comments">
