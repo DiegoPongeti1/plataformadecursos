@@ -1,7 +1,8 @@
 'use client'
 
 import dynamic from "next/dynamic"
-import { useMemo, useState } from "react";
+import type TReactPlayer from "react-player"
+import { useMemo, useRef, useState } from "react";
 import { MdPlayCircle } from "react-icons/md";
 
 
@@ -16,6 +17,7 @@ interface IPlayerVideoPlayerProps {
 }
 
 export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerProps) => {
+    const playerRef = useRef<TReactPlayer>();
 
     const [progress, setProgress] = useState<number | undefined>(undefined)
     const [totalDuration, setTotalDuration] = useState<number | undefined>(undefined)
@@ -43,11 +45,16 @@ export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerPro
                     <MdPlayCircle size={24} />
                 </button>
             )}
+
+            <button onClick={() => playerRef.current.seekTo(120, 'seconds')}>
+                avançar
+            </button>
             <ReactPlayer
+                onReady={ref => playerRef.current = ref}
                 width="100%"
                 height="100%"
 
-                src={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
+                url={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
 
                 controls={true}
                 playing={false}
