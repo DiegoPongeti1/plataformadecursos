@@ -3,9 +3,9 @@
 import { useRouter } from "next/navigation"
 import * as Tabs from "@radix-ui/react-tabs";
 
-import { PlayerVideoPlayer } from "./components/PlayerVideoPlayer"
+import { IPlayerVideoPlayerRef, PlayerVideoPlayer } from "./components/PlayerVideoPlayer"
 import { IPlayerClassGroupProps } from "../playlist/components/PlayerClassGroup"
-import { useMemo } from "react";
+import { useMemo, useRef } from "react";
 import { CourseHeader } from "../../course-header/CourseHeader";
 import { PlayerClassHeader } from "./components/PlayerClassHeader";
 
@@ -32,6 +32,10 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
 
     const router = useRouter();
 
+    const PlayerVideoPlayerRef = useRef<IPlayerVideoPlayerRef>(null);
+
+    // PlayerVideoPlayerRef.current?.setProgress
+
 
     const nextClassId = useMemo(() => {
         const classes = classGroups.flatMap(classGroup => classGroup.classes);
@@ -48,11 +52,18 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
 
     }, [classGroups, playingclassId])
 
+
+
     return (
 
         <div className="flex-1 overflow-auto pb-10">
+
+            <button onClick={() => PlayerVideoPlayerRef.current?.setProgress(120)}>
+                Avançar
+            </button>
             <div className="aspect-video">
                 <PlayerVideoPlayer
+                    ref={PlayerVideoPlayerRef}
                     videoId="Bj1OKr_UKxM"
                     onPlayNext={() => nextClassId ? router.push(`/player/${playingcourseId}/${nextClassId}`) : {}}
                 />

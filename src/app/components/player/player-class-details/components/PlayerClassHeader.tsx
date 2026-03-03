@@ -32,7 +32,7 @@ export const PlayerClassHeader = ({ title, description }: IPlayerClassHeaderProp
             propName: 'TimeMatcher',
             inverseName: 'noTimeMatcher',
             createElement: (children, props) => (
-                <button className='text-primary'>
+                <button key={props.key} className='text-primary hover:underline'>
                     children
                 </button>
             ),

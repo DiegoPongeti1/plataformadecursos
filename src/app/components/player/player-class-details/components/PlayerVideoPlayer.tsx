@@ -2,7 +2,7 @@
 
 import dynamic from "next/dynamic"
 import type TReactPlayer from "react-player"
-import { useMemo, useRef, useState } from "react";
+import { forwardRef, useImperativeHandle, useMemo, useRef, useState } from "react";
 import { MdPlayCircle } from "react-icons/md";
 
 
@@ -16,11 +16,17 @@ interface IPlayerVideoPlayerProps {
     onPlayNext: () => void;
 }
 
-export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerProps) => {
-    const playerRef = useRef<TReactPlayer>();
+export interface IPlayerVideoPlayerRef {
+    setProgress: (seconds: number) => void;
+}
+
+// eslint-disable-next-line react/display-name
+export const PlayerVideoPlayer = forwardRef<IPlayerVideoPlayerRef, IPlayerVideoPlayerProps>(({ videoId, onPlayNext }, playerRefToForward) => {
+    const playerRef = useRef<typeof TReactPlayer>(null);
 
     const [progress, setProgress] = useState<number | undefined>(undefined)
     const [totalDuration, setTotalDuration] = useState<number | undefined>(undefined)
+
 
 
     const secondsUntilEnd = useMemo(() => {
@@ -34,6 +40,15 @@ export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerPro
 
         return !!secondsUntilEnd && Number(secondsUntilEnd) <= 30;
     }, [secondsUntilEnd]);
+
+    useImperativeHandle(playerRefToForward, () => {
+        return {
+            setProgress(seconds) {
+                playerRef.current?.seekTo(seconds, 'seconds')
+            }
+        }
+    }, []);
+
     return (
         <>
             {showNextButton && (
@@ -46,23 +61,23 @@ export const PlayerVideoPlayer = ({ videoId, onPlayNext }: IPlayerVideoPlayerPro
                 </button>
             )}
 
-            <button onClick={() => playerRef.current.seekTo(120, 'seconds')}>
-                avançar
-            </button>
             <ReactPlayer
-                onReady={ref => playerRef.current = ref}
+
                 width="100%"
                 height="100%"
 
-                src={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
+                onReady={ref => playerRef.current = ref}
+                onEnded={() => onPlayNext()}
 
                 controls={true}
                 playing={false}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onProgress={({ playedSeconds }: any) => setProgress(playedSeconds)}
                 onDuration={(duration: number) => setTotalDuration(duration)}
-                onEnded={() => onPlayNext()}
+
+
+                src={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
             />
         </>
     )
-}
+})
