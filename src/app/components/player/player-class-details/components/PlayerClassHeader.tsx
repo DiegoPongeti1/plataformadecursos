@@ -9,10 +9,11 @@ const Interweave = dynamic(() => import('interweave').then(result => result.Inte
 interface IPlayerClassHeaderProps {
     title: string;
     description: string;
+    onTimeClick(seconds: number): void;
 }
 
 
-export const PlayerClassHeader = ({ title, description }: IPlayerClassHeaderProps) => {
+export const PlayerClassHeader = ({ title, description, onTimeClick }: IPlayerClassHeaderProps) => {
 
     const urlMatcher = useMemo(() => {
         return new UrlMatcher(
@@ -27,12 +28,22 @@ export const PlayerClassHeader = ({ title, description }: IPlayerClassHeaderProp
     }, [])
 
     const timeMatcher = useMemo(() => {
+
+        const handleTimeClick = (time: string) => {
+            const [seconds = 0, minute = 0, hour = 0] = time.split(':').reverse().map(num => parseInt(num));
+
+            const resultSeconds = seconds + (minute * 60) + (hour * 3600);
+
+            onTimeClick(resultSeconds)
+        }
+
+
         return {
             asTag: () => 'button',
             propName: 'TimeMatcher',
             inverseName: 'noTimeMatcher',
             createElement: (children, props) => (
-                <button key={props.key} className='text-primary hover:underline'>
+                <button key={props.key} className='text-primary hover:underline' onClick={() => handleTimeClick(String(children))}>
                     children
                 </button>
             ),
@@ -56,7 +67,7 @@ export const PlayerClassHeader = ({ title, description }: IPlayerClassHeaderProp
             }
 
         } satisfies MatcherInterface
-    }, [])
+    }, [onTimeClick])
 
     return (
         <div className=" flex gap-2 flex-col">

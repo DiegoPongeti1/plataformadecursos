@@ -22,6 +22,7 @@ export interface IPlayerVideoPlayerRef {
 
 // eslint-disable-next-line react/display-name
 export const PlayerVideoPlayer = forwardRef<IPlayerVideoPlayerRef, IPlayerVideoPlayerProps>(({ videoId, onPlayNext }, playerRefToForward) => {
+    const WrapperRef = useRef<HTMLDivElement>(null);
     const playerRef = useRef<typeof TReactPlayer>(null);
 
     const [progress, setProgress] = useState<number | undefined>(undefined)
@@ -45,12 +46,13 @@ export const PlayerVideoPlayer = forwardRef<IPlayerVideoPlayerRef, IPlayerVideoP
         return {
             setProgress(seconds) {
                 playerRef.current?.seekTo(seconds, 'seconds')
+                WrapperRef.current?.scrollIntoView({ behavior: 'smooth' })
             }
         }
     }, []);
 
     return (
-        <>
+        <div ref={WrapperRef} className="h-full">
             {showNextButton && (
                 <button
                     onClick={onPlayNext}
@@ -78,6 +80,6 @@ export const PlayerVideoPlayer = forwardRef<IPlayerVideoPlayerRef, IPlayerVideoP
 
                 src={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou
             />
-        </>
+        </div>
     )
 })

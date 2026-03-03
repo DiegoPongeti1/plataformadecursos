@@ -58,9 +58,6 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
 
         <div className="flex-1 overflow-auto pb-10">
 
-            <button onClick={() => PlayerVideoPlayerRef.current?.setProgress(120)}>
-                Avançar
-            </button>
             <div className="aspect-video">
                 <PlayerVideoPlayer
                     ref={PlayerVideoPlayerRef}
@@ -101,6 +98,7 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
                     <PlayerClassHeader
                         title={classItem.title}
                         description={classItem.description}
+                        onTimeClick={seconds => PlayerVideoPlayerRef.current?.setProgress(seconds)}
                     />
                 </Tabs.Content>
 
