@@ -8,6 +8,7 @@ import { IPlayerClassGroupProps } from "../playlist/components/PlayerClassGroup"
 import { useMemo, useRef } from "react";
 import { CourseHeader } from "../../course-header/CourseHeader";
 import { PlayerClassHeader } from "./components/PlayerClassHeader";
+import { Comments } from "./components/comments/Comments";
 
 interface IPlayerClassDetails {
 
@@ -94,7 +95,7 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
 
                 <hr className="border-paper mb-2" />
 
-                <Tabs.Content value="class-details">
+                <Tabs.Content value="class-details" className="px-2">
                     <PlayerClassHeader
                         title={classItem.title}
                         description={classItem.description}
@@ -102,11 +103,13 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
                     />
                 </Tabs.Content>
 
-                <Tabs.Content value="class-comments">
-                    Comentarios da Aula
+                <Tabs.Content value="class-comments" className="px-2">
+                    <Comments
+
+                    />
                 </Tabs.Content>
 
-                <Tabs.Content value="course-details">
+                <Tabs.Content value="course-details" className="px-2">
                     <CourseHeader
                         title={course.title}
                         description={course.description}
