@@ -2,23 +2,38 @@ import { Metadata } from "next"
 import { CourseHeader } from "../../../components/course-header/CourseHeader";
 import { StartCourse } from "../../../components/course-header/components/StartCourse";
 import { CourseContent } from "../../../components/course-content/CourseContent";
+import { APIYouTube } from "@//shared/services/api-youtube";
 
 
 interface Props {
-    params: Promise<{ id: string }> // os params são uma promise
+    params: { id: string }
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> { //função para gerar metadados dinamicamente
-    const { id } = await params; //espera a promise resolver para pegar o id
+    const courseDetail = await APIYouTube.course.getById(params.id);
 
     return {
-        title: id,
-        description: `Curso de ${id}`,
+        title: courseDetail.title,
+        description: courseDetail.description,
+        openGraph: {
+            locale: 'pt_BR',
+            type: 'video.other',
+            title: courseDetail.title,
+            images: courseDetail.image,
+            description: courseDetail.description,
+            videos: courseDetail.classGroups
+                .reduce<string[]>((previous, current) => [
+                    ...previous,
+                    ...current.classes.map(classItem => `https://codarse.com/player/${current.courseId}/${classItem.id}`),
+                ], []),
+        }
     };
 };
 
 export default async function PageCourseDetail({ params }: Props) {
-    const { id } = await params;
+    const courseDetail = await APIYouTube.course.getById(params.id);
+
+    const firstClass = courseDetail.classGroups.at(0)?.classes.at(0)
 
     return (
         <main className="mt-8 flex justify-center ">
@@ -26,43 +41,26 @@ export default async function PageCourseDetail({ params }: Props) {
 
                 <div className="flex-1 ">
 
-                    <StartCourse
-                        idCourse={id}
-                        idClass="1"
-                        title=" Curso de Figma para DEVs "
-                        imageUrl="https://i.ytimg.com/vi/SVepTuBK4V0/hqdefault.jpg"
-                    />
+                    {firstClass && (
+                        <div className="flex-1">
+                            <StartCourse
+                                title={firstClass.title}
+                                idCourse={courseDetail.id}
+                                imageUrl={courseDetail.image}
+                                idClass={firstClass.id}
+                            />
+                        </div>
+                    )}
                 </div>
+
                 <div className="flex-2 flex flex-col gap-12 pb-12">
                     <CourseHeader
-                        title={"Curso de Figma para DEVs"}
-                        description="Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile Aprenda a criar protótipos de alta qualidade para suas aplicações web e mobile."
-                        numberofclasses={48}
+                        title={courseDetail.title}
+                        description={courseDetail.description}
+                        numberofclasses={courseDetail.numberOfClasses}
                     />
 
-                    <CourseContent
-                        classGroups={[
-                            {
-                                title: 'Introdução e Apresentação do Projeto',
-                                courseId: "123",
-                                classes: [
-                                    { id: '1', title: 'NextJs, TailwindCss e TypeScript: #00 - Apresentação do Projeto' },
-                                    { id: '2', title: 'NextJs, TailwindCss e TypeScript: #01 - Instalação e Configuração do Ambiente' },
-                                ],
-                            },
-
-                            {
-                                title: 'Módulo 2',
-                                courseId: "123",
-                                classes: [
-                                    { id: '4', title: 'NextJs, TailwindCss e TypeScript: #00 - Apresentação do Projeto' },
-                                    { id: '5', title: 'NextJs, TailwindCss e TypeScript: #01 - Instalação e Configuração do Ambiente' },
-                                ],
-                            },
-                        ]}
-
-
-                    />
+                    <CourseContent classGroups={courseDetail.classGroups} />
                 </div>
             </div>
         </main>
