@@ -24,6 +24,7 @@ export default async function PageCursos() {
                             image: course.image,
                             href: `/cursos/${course.id}`,
                             description: course.description
+
                         }))
                     }
                 />
