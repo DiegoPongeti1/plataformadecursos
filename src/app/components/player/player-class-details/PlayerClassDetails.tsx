@@ -2,13 +2,20 @@
 
 import { useRouter } from "next/navigation"
 import * as Tabs from "@radix-ui/react-tabs";
+import dynamic from "next/dynamic";
 
 import { IPlayerVideoPlayerRef, PlayerVideoPlayer } from "./components/PlayerVideoPlayer"
 import { IPlayerClassGroupProps } from "../playlist/components/PlayerClassGroup"
 import { useMemo, useRef } from "react";
-import { CourseHeader } from "../../course-header/CourseHeader";
+
 import { PlayerClassHeader } from "./components/PlayerClassHeader";
 import { Comments } from "./components/comments/Comments";
+
+
+const CourseHeader = dynamic(
+    import('../../course-header/CourseHeader').then(res => res.CourseHeader),
+    { ssr: false },
+);
 
 interface IPlayerClassDetails {
 
