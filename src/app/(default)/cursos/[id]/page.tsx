@@ -1,3 +1,4 @@
+
 import { Metadata } from "next"
 import { StartCourse } from "../../../components/course-header/components/StartCourse";
 import { CourseContent } from "../../../components/course-content/CourseContent";
@@ -5,23 +6,22 @@ import { APIYouTube } from "@//shared/services/api-youtube";
 import dynamic from 'next/dynamic'
 
 const CourseHeader = dynamic(
-    import('@/components/course-header/CourseHeader').then(res => res.CourseHeader),
-    { ssr: false },
+    import('../../../components/course-header/CourseHeader').then(res => res.CourseHeader)// erro
+
 );
 
-
 interface Props {
-    params: { id: string }
-}
+    params: Promise<{ id: string }>;
 
-export async function generateStaticParams(): Promise<Props['params'][]> {
+}
+export async function generateStaticParams() {
     const courses = await APIYouTube.course.getAll();
     return courses.map(course => ({ id: course.id }));
 }
 
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> { //função para gerar metadados dinamicamente
-    const courseDetail = await APIYouTube.course.getById(params.id);
+    const courseDetail = await APIYouTube.course.getById((await params).id);
 
     return {
         title: courseDetail.title,
@@ -43,7 +43,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> { /
 
 export default async function PageCourseDetail({ params }: Props) {
 
-    const courseDetail = await APIYouTube.course.getById(params.id);
+
+    const { id } = await params;
+    const courseDetail = await APIYouTube.course.getById(id);
+
+    // const courseDetail = await APIYouTube.course.getById(params.id);
 
     const firstClass = courseDetail.classGroups.at(0)?.classes.at(0)
 

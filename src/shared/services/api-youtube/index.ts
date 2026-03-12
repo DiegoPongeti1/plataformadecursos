@@ -30,6 +30,7 @@ export const APIYouTube = {
         },
 
         getById: async (id: string) => {
+
             const { data: { items: [courseItem] = [] } } = await YouTubeAPIClient.playlists.list({
                 id: [id],
                 maxResults: 1,
