@@ -37,31 +37,6 @@ The app uses the **YouTube Data API v3** to fetch course data:
 
 Data is cached using Next.js ISR with revalidation intervals (48h for playlists, 24h for playlist items).
 
-## Getting Started
-
-1. Clone the repository:
-   ```bash
-   git clone https://github.com/your-username/plataformadecursos.git
-   cd plataformadecursos
-   ```
-
-2. Install dependencies:
-   ```bash
-   npm install
-   ```
-
-3. Create a `.env` file with your YouTube API key:
-   ```
-   YOUTUBE_API_KEY=your_api_key_here
-   ```
-
-4. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-5. Open [http://localhost:3000](http://localhost:3000)
-
 ## Project Structure
 
 ```

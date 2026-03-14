@@ -11,8 +11,8 @@ export function CourseContent({ classGroups }: IContentCourseProps) {
                 Conteúdo do Curso
             </h2>
             <ol className="flex flex-col rounded-lg overflow-clip">
-                {classGroups.map((classGroup) => (
-                    <li key={classGroup.courseId} className="flex flex-col">
+                {classGroups.map((classGroup, index) => (
+                    <li key={`${classGroup.courseId}-${classGroup.title}-${index}`} className="flex flex-col">
                         <ClassGroup {...classGroup} />
                     </li>
                 ))}

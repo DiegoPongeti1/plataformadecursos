@@ -6,11 +6,11 @@ import { MdPlayCircleOutline } from "react-icons/md";
 
 interface IClassProps {
     title: string;
-    palyerUrl: string;
+    playerUrl: string;
 }
-export function Class({ title, palyerUrl }: IClassProps) {
+export function Class({ title, playerUrl }: IClassProps) {
     return (
-        <Link href={palyerUrl} className="flex items-center gap-6 p-4 hover:no-underline">
+        <Link href={playerUrl} className="flex items-center gap-6 p-4 hover:no-underline">
             <MdPlayCircleOutline size={24} />
             {title}
         </Link>

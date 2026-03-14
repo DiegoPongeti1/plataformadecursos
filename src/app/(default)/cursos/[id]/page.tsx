@@ -30,7 +30,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> { /
             locale: 'pt_BR',
             type: 'video.other',
             title: courseDetail.title,
-            images: courseDetail.image,
+            images: courseDetail.image ? [{ url: courseDetail.image }] : undefined,
             description: courseDetail.description,
             videos: courseDetail.classGroups
                 .reduce<string[]>((previous, current) => [

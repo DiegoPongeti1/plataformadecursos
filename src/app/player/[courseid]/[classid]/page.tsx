@@ -2,10 +2,7 @@
 import { PlayerClassDetails, PlayerHeader, PlayerPlaylist } from "@//app/components/player";
 
 interface Props {
-    params: {
-        courseid: string,
-        classid: string,
-    };
+    params: Promise<{ courseid: string; classid: string }>;
 }
 
 export default async function PagePlayer({ params }: Props) {

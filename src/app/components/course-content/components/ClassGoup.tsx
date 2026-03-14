@@ -28,9 +28,9 @@ export function ClassGroup({ title, courseId, classes }: IClassGroupProps) {
             >
                 {open
                     ?
-                    <MdKeyboardArrowRight size={24} />
-                    :
                     <MdKeyboardArrowDown size={24} />
+                    :
+                    <MdKeyboardArrowRight size={24} />
                 }
                 {title}
             </button>
@@ -41,7 +41,7 @@ export function ClassGroup({ title, courseId, classes }: IClassGroupProps) {
                         <Class
                             key={id}
                             title={title}
-                            palyerUrl={`/player/${courseId}/${id}`}
+                            playerUrl={`/player/${courseId}/${id}`}
                         />
                     </li>
                 ))}

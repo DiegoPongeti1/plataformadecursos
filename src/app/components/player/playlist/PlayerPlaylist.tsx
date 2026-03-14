@@ -31,7 +31,7 @@ export function PlayerPlaylist({ classGroups, PlayingClassId, PlayingcourseId }:
 
             <ol className="overflow-auto overflow-primary">
                 {classGroups.map((classGroup, index) => (
-                    <li key={classGroup.title}>
+                    <li key={`${classGroup.title}-${index}`}>
 
                         <PlayerClassGroup
 

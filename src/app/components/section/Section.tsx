@@ -12,7 +12,7 @@ interface ISectionProps { // Define as propriedades que a Section receberá
 
 export function Section({ title, variant, items }: ISectionProps) { // Recebe as propriedades e as desestrutura
 
-    const scroollRef = useRef<HTMLUListElement>(null) //cria uma referência para o elemento ul
+    const scrollRef = useRef<HTMLUListElement>(null) //cria uma referência para o elemento ul
 
     const [scrollPosition, setScrollPosition] = useState<'start' | 'middle' | 'end'>("start")
 
@@ -29,8 +29,8 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
     }
 
     const handleSetScroll = (scroll: number) => { // Função para rolar a lista
-        const currentScrollLeft = scroollRef.current?.scrollLeft || 0; // Pega a posição atual da lista
-        scroollRef.current?.scrollTo({ behavior: 'smooth', left: currentScrollLeft + scroll }); // Rola a lista
+        const currentScrollLeft = scrollRef.current?.scrollLeft || 0; // Pega a posição atual da lista
+        scrollRef.current?.scrollTo({ behavior: 'smooth', left: currentScrollLeft + scroll }); // Rola a lista
     }
 
 
@@ -42,7 +42,7 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
 
             <ul
                 onScroll={handleScroll}
-                ref={scroollRef}
+                ref={scrollRef}
                 data-variant={variant}
 
                 className=" grid gap-2 grid-cols-1 sm:grid-cols-none data-[variant=grid]:sm:grid-cols-2 data-[variant=grid]:md:grid-cols-3 data-[variant=h-list]:sm:grid-flow-col data-[variant=h-list]:sm:overflow-x-auto  "
@@ -59,7 +59,7 @@ export function Section({ title, variant, items }: ISectionProps) { // Recebe as
                 )}
 
                 {items.map(item => (
-                    <li key={item.title} data-variant={variant} className="w-full data-[variant=h-list]:sm:w-72 ">
+                    <li key={item.href} data-variant={variant} className="w-full data-[variant=h-list]:sm:w-72 ">
                         <Card
 
                             image={item.image}

@@ -44,7 +44,7 @@ export const PlayerClassHeader = ({ title, description, onTimeClick }: IPlayerCl
             inverseName: 'noTimeMatcher',
             createElement: (children, props) => (
                 <button key={props.key} className='text-primary hover:underline' onClick={() => handleTimeClick(String(children))}>
-                    children
+                    {children}
                 </button>
             ),
             match: (content) => {
