@@ -45,7 +45,7 @@ export const PlayerVideoPlayer = forwardRef<IPlayerVideoPlayerRef, IPlayerVideoP
     useImperativeHandle(playerRefToForward, () => {
         return {
             setProgress(seconds) {
-                playerRef.current?.seekTo(seconds, 'seconds')
+                //playerRef.current?.seekTo(seconds, 'seconds')
                 WrapperRef.current?.scrollIntoView({ behavior: 'smooth' })
             }
         }
@@ -68,14 +68,14 @@ export const PlayerVideoPlayer = forwardRef<IPlayerVideoPlayerRef, IPlayerVideoP
                 width="100%"
                 height="100%"
 
-                onReady={ref => playerRef.current = ref}
+                // onReady={ref => playerRef.current = ref}
                 onEnded={() => onPlayNext()}
 
                 controls={true}
                 playing={false}
                 // eslint-disable-next-line @typescript-eslint/no-explicit-any
                 onProgress={({ playedSeconds }: any) => setProgress(playedSeconds)}
-                onDuration={(duration: number) => setTotalDuration(duration)}
+                //onDuration={(duration: number) => setTotalDuration(duration)}
 
 
                 src={`https://www.youtube.com/watch?v=${videoId}`} // tive que usar o src para pegar a url da aula, usando 'url' não funcionou

@@ -12,6 +12,7 @@
     "@googleapis/youtube": "^31.0.0",
     "@radix-ui/react-tabs": "^1.1.13",
     "@radix-ui/themes": "^3.3.0",
+    "date-fns": "^4.1.0",
     "interweave": "^13.1.1",
     "interweave-autolink": "^5.1.2",
     "next": "16.1.6",

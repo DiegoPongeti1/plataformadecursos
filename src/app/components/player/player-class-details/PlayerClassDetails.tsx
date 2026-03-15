@@ -69,7 +69,7 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
             <div className="aspect-video">
                 <PlayerVideoPlayer
                     ref={PlayerVideoPlayerRef}
-                    videoId="Bj1OKr_UKxM"
+                    videoId="bP47qRVRqQs"
                     onPlayNext={() => nextClassId ? router.push(`/player/${playingcourseId}/${nextClassId}`) : {}}
                 />
             </div>
@@ -112,7 +112,41 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
 
                 <Tabs.Content value="class-comments" className="px-2">
                     <Comments
+                        comments={[                   
+                                {
+                                    content: 'My comment',
+                                    likesCount: 999,
+                                    publishDate: '2025-06-10T02:21:46Z',
+                                    replies: undefined,
+                                    author: {
+                                        image: 'https://yt3.ggpht.com/ytc/AIdro_meYPWF3Z81dj754MMCwRNB5qa5X0rnAVUlmwP7B-cxg3Ij=s600-c-k-c0x00ffffff-no-rj-rp-mo',
+                                        userName: '@DiegoPongeti'
+                                    }
+                                },
 
+                                {
+                                        content: 'My comment',
+                                        likesCount: 999,
+                                        publishDate: '2025-06-10T02:21:46Z',
+                                        author: {
+                                            image: 'https://yt3.ggpht.com/ytc/AIdro_meYPWF3Z81dj754MMCwRNB5qa5X0rnAVUlmwP7B-cxg3Ij=s600-c-k-c0x00ffffff-no-rj-rp-mo',
+                                            userName: '@DiegoPongeti'
+                                        },
+                                        replies: [
+                                            {
+                                                content: 'My Reply',
+                                                likesCount: 999,
+                                                publishDate: '2025-06-10T02:21:46Z',
+                                                author: {
+                                                image: 'https://yt3.ggpht.com/ytc/AIdro_meYPWF3Z81dj754MMCwRNB5qa5X0rnAVUlmwP7B-cxg3Ij=s600-c-k-c0x00ffffff-no-rj-rp-mo',
+                                                userName: '@DiegoPongeti'
+                                                }
+                                            }
+                                        ]
+                                    
+                                }
+                            
+                        ]}
                     />
                 </Tabs.Content>
 
