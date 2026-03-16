@@ -33,7 +33,7 @@ A course platform built with **Next.js**, **TypeScript**, and **Tailwind CSS**, 
 The app uses the **YouTube Data API v3** to fetch course data:
 
 - **`playlists.list`** — Fetches all playlists from a specific channel, filtered by `#CODARSE` tag in the description
-- **`playlistItems.list`** — Fetches all videos in a playlist with automatic pagination, then groups them into modules based on a `CODARSE - <module name>` pattern in each video's description
+- **`playlistItems.list`** — Fetches all videos in a playlist with automatic pagination, then groups them into modules based on a `CODARSE` pattern in each video's description
 
 Data is cached using Next.js ISR with revalidation intervals (48h for playlists, 24h for playlist items).
 
