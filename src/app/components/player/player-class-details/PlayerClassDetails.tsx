@@ -6,10 +6,12 @@ import dynamic from "next/dynamic";
 
 import { IPlayerVideoPlayerRef, PlayerVideoPlayer } from "./components/PlayerVideoPlayer"
 import { IPlayerClassGroupProps } from "../playlist/components/PlayerClassGroup"
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 
 import { PlayerClassHeader } from "./components/PlayerClassHeader";
 import { Comments } from "./components/comments/Comments";
+import { PlayerPlaylist } from "../playlist/PlayerPlaylist";
+import { MdComment, MdThumbUp, MdVisibility } from "react-icons/md";
 
 
 const CourseHeader = dynamic(
@@ -23,32 +25,53 @@ interface IPlayerClassDetails {
         title: string;
         description: string;
         numberOfClasses: number;
+        Id: string;
+        classGroups: Pick<IPlayerClassGroupProps, 'title' | 'classes'>[];
     }
 
     classItem: {
+        Id: string;
+        videoId: string,
+        viewsCount: number;
+        likesCount: number;
+        commentsCount: number;
         title: string;
         description: string;
     }
 
-    playingclassId: string;
-    playingcourseId: string;
-    classGroups: Pick<IPlayerClassGroupProps, 'title' | 'classes'>[];
+    
+   
 }
 
 
-export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playingclassId, classItem }: IPlayerClassDetails) => {
+export const PlayerClassDetails = ({ course, classItem }: IPlayerClassDetails) => {
 
     const router = useRouter();
 
     const PlayerVideoPlayerRef = useRef<IPlayerVideoPlayerRef>(null);
 
+    const [currentTab, setCurrentTab] = useState('class-details')
     // PlayerVideoPlayerRef.current?.setProgress
 
 
-    const nextClassId = useMemo(() => {
-        const classes = classGroups.flatMap(classGroup => classGroup.classes);
+    useEffect(() => {
+        const matchMedia = window.matchMedia("(min-width: 768px)")
+        
 
-        const currentClassIndex = classes.findIndex(classItem => classItem.Classid === playingclassId);
+        const handleMatchMedia = (e: MediaQueryListEvent) => {
+            if (e.matches && currentTab === 'course-playlist') {
+                setCurrentTab('class-details');
+
+            }
+        }
+        matchMedia.addEventListener('change', handleMatchMedia);
+       return () => matchMedia.removeEventListener('change', handleMatchMedia);
+    }, [currentTab])
+
+    const nextClassId = useMemo(() => {
+        const classes = course.classGroups.flatMap(classGroup => classGroup.classes);
+
+        const currentClassIndex = classes.findIndex(({Classid}) => Classid === classItem.Id);
 
         const nextClassIndex = currentClassIndex + 1;
 
@@ -58,7 +81,7 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
 
         return classes[nextClassIndex].Classid;
 
-    }, [classGroups, playingclassId])
+    }, [course.classGroups, classItem.Id])
 
 
 
@@ -69,18 +92,47 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
             <div className="aspect-video">
                 <PlayerVideoPlayer
                     ref={PlayerVideoPlayerRef}
-                    videoId="bP47qRVRqQs"
-                    onPlayNext={() => nextClassId ? router.push(`/player/${playingcourseId}/${nextClassId}`) : {}}
+                    videoId={classItem.videoId}
+                    onPlayNext={() => nextClassId ? router.push(`/player/${course.Id}/${nextClassId}`) : {}}
                 />
             </div>
 
-            <Tabs.Root defaultValue='class-details'>
+            <div className="flex gap-2 p-2 opacity-50">
+                <div className="flex gap- items-center ">
+                    <MdVisibility />
+                    <span>{classItem.viewsCount}</span>
+                    <span>Visualizações</span>
+                </div>
+                <a className="flex gap- items-center " target="_blank" href={`https://www.youtube.com/watch?v=${classItem.videoId}`}>
+                    
+                    <MdThumbUp />
+                    <span>{classItem.likesCount}</span>
+                    <span>Curtidas</span>
+                
+                </a>
+                <div className="flex gap- items-center">
+                    
+                     <MdComment />
+                     <span>{classItem.commentsCount}</span>
+                    <span>Comentários</span>
+                
+                </div>
+            </div>
+
+            <Tabs.Root value={currentTab} onValueChange={value=> setCurrentTab(value)}>
                 <Tabs.List className="flex gap-4">
                     <Tabs.Trigger
                         value="class-details"
                         className='p-2 flex items-center justify-center border-b-4 border-transparent data-[state=active]:border-primary '
                     >
                         Visão geral
+                    </Tabs.Trigger>
+
+                    <Tabs.Trigger
+                        value="course-playlist"
+                        className='p-2 flex items-center justify-center border-b-4 border-transparent data-[state=active]:border-primary md:hidden'
+                    >
+                        Conteúdo do Curso
                     </Tabs.Trigger>
 
                     <Tabs.Trigger
@@ -107,6 +159,14 @@ export const PlayerClassDetails = ({ course, playingcourseId, classGroups, playi
                         title={classItem.title}
                         description={classItem.description}
                         onTimeClick={seconds => PlayerVideoPlayerRef.current?.setProgress(seconds)}
+                    />
+                </Tabs.Content>
+
+                <Tabs.Content value="course-playlist" className="px-2">
+                    <PlayerPlaylist
+                        PlayingClassId={classItem.Id}
+                        PlayingcourseId={course.Id}
+                        classGroups={course.classGroups}
                     />
                 </Tabs.Content>
 

@@ -91,7 +91,7 @@ export default async function PagePlayer({ params }: Props) {
 
             <div className="flex gap-2 h-[calc(100vh-72px)]">
 
-                <div className="max-w-96 ">
+                <div className="max-w-96 hidden md:block">
                     <PlayerPlaylist
                         PlayingClassId={classid}
                         PlayingcourseId={courseid}
@@ -100,16 +100,20 @@ export default async function PagePlayer({ params }: Props) {
                 </div>
 
                 <PlayerClassDetails
-                    playingclassId={classid}
-                    playingcourseId={courseid}
-                    classGroups={classGroupsData}
                     course={{
+                        Id: courseid,
+                        classGroups: classGroupsData,
                         title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
                         description: "Os melhores cursos de API Rest, Node e TypeScript, com aulas práticas e objetivas, focadas no mercado de trabalho, com certificado e suporte de professores qualificados, faça já sua matricula e garanta sua vaga.",
                         numberOfClasses: 10,
                     }}
 
                     classItem={{
+                        Id: classid,
+                        videoId: 'bP47qRVRqQs',
+                        commentsCount: 15,
+                        likesCount: 15,
+                        viewsCount: 15,
                         title: "API Rest, Node e TypeScript: #00 - Apresentação do Curso, tecnologias e ferramentas",
                         description: "Visão geral Os melhores cursos de API Rest, Node e TypeScript, com aulas práticas e objetivas, focadas no mercado de trabalho, com certificado e suporte de professores qualificados, faça já sua matricula e garanta sua vaga. www.google.com",
                     }}
