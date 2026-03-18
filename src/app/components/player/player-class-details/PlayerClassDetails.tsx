@@ -12,11 +12,12 @@ import { PlayerClassHeader } from "./components/PlayerClassHeader";
 import { Comments } from "./components/comments/Comments";
 import { PlayerPlaylist } from "../playlist/PlayerPlaylist";
 import { MdComment, MdThumbUp, MdVisibility } from "react-icons/md";
+import { CourseHeaderLoading } from "../../course-header/CourseHeaderLoading";
 
 
 const CourseHeader = dynamic(
     import('../../course-header/CourseHeader').then(res => res.CourseHeader),
-    { ssr: false },
+    { ssr: false, loading: CourseHeaderLoading },
 );
 
 interface IPlayerClassDetails {

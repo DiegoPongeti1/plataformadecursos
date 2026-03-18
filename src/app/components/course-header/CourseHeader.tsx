@@ -22,7 +22,7 @@ export const CourseHeader = ({ title, description, numberofclasses }: ICourseHea
             </CollapsibleText>
 
             <div className="flex gap-2 items-center">
-                <ContentCopy title="Copie o Link abaixo" content={window.location.href}>
+                <ContentCopy title="Copie o Link abaixo" content={typeof window !== 'undefined' ? window.location.href : ''}>
                     <button className="rounded-full gap-2 py-2 px-4 bg-paper flex items-center">
                         <MdShare />
                         Compartilhar
